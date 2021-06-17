@@ -3,7 +3,7 @@ import mxnet as mx
 from mxnet import gluon
 from mxnet import autograd as ag
 
-from network import MLPnet
+from network import MLPnet, Convnet
 
 mnist = mx.test_utils.get_mnist()
 
@@ -19,6 +19,8 @@ gpus = mx.test_utils.list_gpus()
 ctx = [mx.cpu(i) for i in range(VCPU)]
 
 net = MLPnet()
+# net = Convnet()
+
 net.initialize(mx.init.Xavier(magnitude=2.24), ctx=ctx)
 
 acc_metric = mx.metric.Accuracy()
